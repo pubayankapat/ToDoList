@@ -1,5 +1,79 @@
 *{
     padding: 0;
     margin: 0;
+   
+}
+
+html{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 16pt;
+    color: white;
+}
+body{
+    min-height: 100vh;
+    padding: 10px;
+    background-color: orangered;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+h1{
+    margin: 100px;
+    margin-bottom: 20px;
+    font-size: 3rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    text-align: center;
+    color: aqua;
+}
+.wrapper{
+    width: 700px;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+#todo-input{
+    box-sizing: border-box;
+    padding: 12px 20px;
+    width: 100%;
+    background-color: antiquewhite;
+    border: 2px solid black;
+    border-radius: 1.5rem;
+}
+#todo-input:focus{
+    outline: none;
+}
+form{
+    position: relative;
+
+}
+#add-button{
+    position: absolute;
+    top: 0;
+    right: 0;
     background-color: aqua;
+    height: 100%;
+    padding: 0 30px;
+    border: none;
+    border-radius: 100px;
+    font:inherit;
+    font-weight: 600;
+    color: black;
+    cursor: pointer;
+}
+.todo{
+    margin-bottom: 10px;
+    padding: 0 16 px;
+    background-color: blue;
+    border-radius: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+.todo .todo-text{
+    padding: 15px;
+    font-size: 2rem;
+}
+.customcheckbox img{
+    size: 50%;
 }

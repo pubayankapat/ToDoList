@@ -8,14 +8,38 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>To-Do List</title>
+    <title>To-Do App</title>
 </head>
 
 <body>
-    <div class="container">
-        <div class="to-do">
-            <h1>To-Do Listimg <img src="images\icon.png" alt=""></h1>
-        </div>
+    <h1>To-do List</h1>
+    <div class="wrapper">
+        <form action="">
+            <input type="text" id="todo-input" placeholder="Write your job and hit enter to add">
+            <button id="add-button">ADD</button>
+        </form>
+        <ul class="todo-list">
+            <li class="todo">
+                <input type="checkbox" id="todo-1" >
+                <label for="todo-1" class="customcheckbox">
+                    <img src="images\checked.png" alt="">
+                </label>
+                <label for="todo-2" class="todo-text">
+                    webdev projectof todolist!
+                </label>
+                <button class="delete-button"><img src="images/icons8-delete-30.png" alt=""></button>
+            </li>
+             <li class="todo">
+                <input type="checkbox" id="todo-1">
+                <label for="todo-1" class="customcheckbox">
+                    <img src="images\checked.png" alt="">
+                </label>
+                <label for="todo-2" class="todo-text">
+                    webdev projectof todolist!
+                </label>
+                <button class="delete-button"><img src="images/icons8-delete-30.png" alt=""></button>
+            </li>
+        </ul>
     </div>
 </body>
 
