@@ -77,10 +77,16 @@ form{
     font-size: 1.5rem;
 }
 .customcheckbox img{
-    height: 2rem;
+    margin-top: .3rem;
+    margin-left: 1rem;
+    height: 1.7rem;
+}
+.customcheckbox img:hover{
+    opacity: 70%;
 }
 .delete-button {
    padding: 3px;
+   margin-right: 1rem;
    background: none;
    border: none;
    display: flex;
@@ -90,5 +96,27 @@ form{
 }
 .delete-button:hover {
     opacity: 70%;
-    
+}
+input[type="checkbox"]:checked ~ .todo-text{
+text-decoration: line-through;
+color: gray;
+}
+input[type="checkbox"]{
+    display: none;
+}
+@media(max-width:500px){
+    html{
+        font-size: 12pt;
+    }
+    #add-button{
+        position: unset;
+        width: 100%;
+        margin-top: 10px;
+        padding:15px;
+        height:auto;
+    }
+    h1{
+        margin-top: 50px;
+        font-size: 15w;
+    }
 }
