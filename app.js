@@ -1,53 +1,55 @@
-// Select DOM elements
-const form = document.querySelector('form');
-const input = document.getElementById('todo-input');
-const todoList = document.querySelector('.todo-list');
+const input = document.getElementById("todo-input");
+const addButton = document.getElementById("add-button");
+const todoList = document.querySelector(".todo-list");
 
-// Prevent form from submitting on Enter
-form.addEventListener('submit', (e) => {
+// Fetch todos from localStorage
+let todos = JSON.parse(localStorage.getItem("todos")) || [];
+
+// Load existing todos
+window.onload = () => {
+    todos.forEach(todo => renderTodo(todo));
+};
+
+// Handle form submission
+addButton.addEventListener("click", function (e) {
     e.preventDefault();
-    addTodo();
-});
-
-// Add button functionality
-document.getElementById('add-button').addEventListener('click', (e) => {
-    e.preventDefault();
-    addTodo();
-});
-
-// Function to create and append a new todo item
-function addTodo() {
     const text = input.value.trim();
-    if (text === '') return;
+    if (text === "") return;
 
-    const id = `todo-${Math.random().toString(36).substr(2, 9)}`;
+    const todo = {
+        id: Date.now().toString(),
+        text: text
+    };
 
-    const li = document.createElement('li');
-    li.classList.add('todo');
+    todos.push(todo);
+    localStorage.setItem("todos", JSON.stringify(todos));
+    renderTodo(todo);
+    input.value = "";
+});
+
+// Render a todo item in the list
+function renderTodo(todo) {
+    const li = document.createElement("li");
+    li.className = "todo";
+    li.setAttribute("data-id", todo.id);
 
     li.innerHTML = `
-        <input type="checkbox" id="${id}">
-        <label for="${id}" class="customcheckbox">
+        <input type="checkbox" id="todo-${todo.id}">
+        <label for="todo-${todo.id}" class="customcheckbox">
             <img src="images/checked.png" alt="">
         </label>
-        <label for="${id}" class="todo-text">${text}</label>
-        <button class="delete-button">
-            <img src="images/icons8-delete-30.png" alt="">
-        </button>
+        <label for="todo-${todo.id}" class="todo-text">
+            ${todo.text}
+        </label>
+        <button class="delete-button"><img src="images/icons8-delete-30.png" alt=""></button>
     `;
 
-    // Add delete functionality
-    li.querySelector('.delete-button').addEventListener('click', () => {
+    // Delete button handler
+    li.querySelector(".delete-button").addEventListener("click", () => {
         li.remove();
-    });
-
-    // Add completed styling toggle (optional)
-    li.querySelector(`#${id}`).addEventListener('change', (e) => {
-        li.classList.toggle('completed', e.target.checked);
+        todos = todos.filter(t => t.id !== todo.id);
+        localStorage.setItem("todos", JSON.stringify(todos));
     });
 
     todoList.appendChild(li);
-    input.value = '';
 }
-
-
